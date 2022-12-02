@@ -4,7 +4,7 @@ type Task = {
   text: string;
 };
 
-const Tasks: FC = ({ inputText, taskList }) => {
+const Tasks: FC = ({ taskList }) => {
   return (
     <div>
       {taskList.map((task: Task) => (
