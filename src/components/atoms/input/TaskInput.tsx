@@ -1,15 +1,16 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
+import { Task } from "../../../type/task";
 
 type Props = {
   inputText: string;
   setInputText: Dispatch<SetStateAction<string>>;
-  taskList: string[];
+  taskList: Task[];
   setTaskList: any;
-  // setTaskList: Dispatch<SetStateAction<string[]>>;
+  // setTaskList: Dispatch<SetStateAction<Task[]>>;
 };
 
-const TaskInput: FC<Props> = ({
+const TaskInput = ({
   inputText,
   setInputText,
   taskList,

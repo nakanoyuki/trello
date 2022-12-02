@@ -1,13 +1,10 @@
 import React, { FC } from "react";
+import { Task } from "../../../type/task";
 
-type Task = {
-  text: string;
-};
-
-const Tasks: FC = ({ taskList }) => {
+const Tasks = ({ taskList }: { taskList: Task[] }) => {
   return (
     <div>
-      {taskList.map((task: Task) => (
+      {taskList.map((task) => (
         <p>{task.text}</p>
       ))}
     </div>
