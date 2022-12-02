@@ -1,9 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-type InputType = {
-  maxLength: number;
-};
 const TaskCardTitle = () => {
   // クリックしたかどうか
   const [isClick, setIsClick] = useState(false);

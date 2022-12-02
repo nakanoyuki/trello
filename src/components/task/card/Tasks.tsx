@@ -1,7 +1,17 @@
-import React from "react";
+import React, { FC } from "react";
 
-const Tasks = () => {
-  return <div></div>;
+type Task = {
+  text: string;
+};
+
+const Tasks: FC = ({ taskList }) => {
+  return (
+    <div>
+      {taskList.map((task: Task) => (
+        <p>{task.text}</p>
+      ))}
+    </div>
+  );
 };
 
 export default Tasks;
