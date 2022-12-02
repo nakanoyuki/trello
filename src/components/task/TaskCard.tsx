@@ -12,7 +12,7 @@ const TaskCard = () => {
     <STaskCard>
       <TaskCardTitle />
       <TaskDeleteButton />
-      <Tasks />
+      <Tasks inputText={inputText} taskList={taskList} />
       <TaskInput
         inputText={inputText}
         setInputText={setInputText}

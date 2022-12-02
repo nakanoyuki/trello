@@ -1,14 +1,15 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
 
 type Props = {
   inputText: string;
   setInputText: Dispatch<SetStateAction<string>>;
   taskList: string[];
-  setTaskList: Dispatch<SetStateAction<string[]>>;
+  setTaskList: any;
+  // setTaskList: Dispatch<SetStateAction<string[]>>;
 };
 
-const TaskInput = ({
+const TaskInput: FC<Props> = ({
   inputText,
   setInputText,
   taskList,
@@ -16,10 +17,12 @@ const TaskInput = ({
 }: Props) => {
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    // カードを追加
+    setTaskList([...taskList, { text: inputText }]);
+    setInputText("");
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputText(e.target.value);
-    // console.log(inputText);
   };
 
   return (
@@ -29,6 +32,7 @@ const TaskInput = ({
           type="text"
           placeholder="タスク追加"
           onChange={onHandleInputText}
+          value={inputText}
         />
       </form>
     </div>
