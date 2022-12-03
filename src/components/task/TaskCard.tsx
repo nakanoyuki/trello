@@ -4,15 +4,16 @@ import TaskDeleteButton from "../atoms/button/TaskDeleteButton";
 import TaskInput from "../atoms/input/TaskInput";
 import TaskCardTitle from "./card/TaskCardTitle";
 import Tasks from "./card/Tasks";
+import { TaskType } from "../../type/task";
 
 const TaskCard = () => {
-  const [inputText, setInputText] = useState<string>("");
-  const [taskList, setTaskList] = useState<string[]>([]);
+  const [inputText, setInputText] = useState("");
+  const [taskList, setTaskList] = useState<TaskType[]>([]);
   return (
     <STaskCard>
       <TaskCardTitle />
       <TaskDeleteButton />
-      <Tasks inputText={inputText} taskList={taskList} />
+      <Tasks taskList={taskList} />
       <TaskInput
         inputText={inputText}
         setInputText={setInputText}

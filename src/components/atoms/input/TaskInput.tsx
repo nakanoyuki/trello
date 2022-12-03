@@ -1,12 +1,12 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
+import { TaskType } from "../../../type/task";
 
 type Props = {
   inputText: string;
   setInputText: Dispatch<SetStateAction<string>>;
-  taskList: string[];
-  setTaskList: any;
-  // setTaskList: Dispatch<SetStateAction<string[]>>;
+  taskList: TaskType[];
+  setTaskList: Dispatch<SetStateAction<TaskType[]>>;
 };
 
 const TaskInput: FC<Props> = ({
@@ -18,7 +18,7 @@ const TaskInput: FC<Props> = ({
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // カードを追加
-    setTaskList([...taskList, { text: inputText }]);
+    setTaskList([...taskList, { id: 1, text: inputText }]);
     setInputText("");
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {

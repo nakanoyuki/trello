@@ -1,17 +1,30 @@
 import React, { FC } from "react";
+import { TaskType } from "../../../type/task";
+import Task from "../card/Task";
 
-type Task = {
-  text: string;
+type TasksProps = {
+  taskList: TaskType[];
 };
 
-const Tasks: FC = ({ inputText, taskList }) => {
+// function Tasks(props: TasksProps) {
+// const Tasks = ( props:TasksProps ) => {
+const Tasks: FC<TasksProps> = ({ taskList }) => {
   return (
     <div>
-      {taskList.map((task: Task) => (
-        <p>{task.text}</p>
+      {taskList.map((task) => (
+        <Task task={task} />
       ))}
     </div>
   );
 };
+// const Tasks: FC<TasksProps> = ({ taskList }) => {
+//   return (
+//     <div>
+//       {taskList.map((task) => (
+//         <Task task={task} />
+//       ))}
+//     </div>
+//   );
+// };
 
 export default Tasks;
