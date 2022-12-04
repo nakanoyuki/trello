@@ -1,17 +1,28 @@
 import React, { FC } from "react";
+import styled from "styled-components";
+import { TaskType } from "../../../type/task";
+import Task from "../card/Task";
 
-type Task = {
-  text: string;
+type TasksProps = {
+  taskList: TaskType[];
 };
 
-const Tasks: FC = ({ taskList }) => {
+
+// function Tasks(props: TasksProps) {
+// const Tasks = ( props:TasksProps ) => {
+const Tasks: FC<TasksProps> = ({ taskList }) => {
+
   return (
-    <div>
-      {taskList.map((task: Task) => (
-        <p>{task.text}</p>
+    <STaskCards>
+      {taskList.map((task) => (
+        <Task task={task} />
       ))}
-    </div>
+    </STaskCards>
   );
 };
+
+const STaskCards = styled.ul`
+  padding: 0;
+`;
 
 export default Tasks;
