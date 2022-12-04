@@ -7,9 +7,11 @@ type TasksProps = {
   taskList: TaskType[];
 };
 
+
 // function Tasks(props: TasksProps) {
 // const Tasks = ( props:TasksProps ) => {
 const Tasks: FC<TasksProps> = ({ taskList }) => {
+
   return (
     <STaskCards>
       {taskList.map((task) => (
