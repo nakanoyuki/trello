@@ -1,6 +1,8 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
 import styled from "styled-components";
+import uuid from "react-uuid";
+
 import { TaskType } from "../../../type/task";
 
 type Props = {
@@ -19,8 +21,9 @@ const TaskInput: FC<Props> = ({
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // カードを追加
-    setTaskList([...taskList, { id: 1, text: inputText }]);
+    setTaskList([...taskList, { id: uuid(), text: inputText }]);
     setInputText("");
+    console.log(id);
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputText(e.target.value);
