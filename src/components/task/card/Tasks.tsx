@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import styled from "styled-components";
 import { TaskType } from "../../../type/task";
 import Task from "../card/Task";
 
@@ -10,21 +11,16 @@ type TasksProps = {
 // const Tasks = ( props:TasksProps ) => {
 const Tasks: FC<TasksProps> = ({ taskList }) => {
   return (
-    <div>
+    <STaskCards>
       {taskList.map((task) => (
         <Task task={task} />
       ))}
-    </div>
+    </STaskCards>
   );
 };
-// const Tasks: FC<TasksProps> = ({ taskList }) => {
-//   return (
-//     <div>
-//       {taskList.map((task) => (
-//         <Task task={task} />
-//       ))}
-//     </div>
-//   );
-// };
+
+const STaskCards = styled.ul`
+  padding: 0;
+`;
 
 export default Tasks;

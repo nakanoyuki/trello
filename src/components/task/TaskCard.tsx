@@ -28,5 +28,6 @@ const STaskCard = styled.div`
   background: #f7f7f7;
   border-radius: 10px;
   padding: 20px 20px 26px;
+  box-shadow: 2px 6px 8px 0px rgb(0 0 0 / 10%);
 `;
 export default TaskCard;

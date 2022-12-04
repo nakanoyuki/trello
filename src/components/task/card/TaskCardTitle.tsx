@@ -5,7 +5,7 @@ const TaskCardTitle = () => {
   // クリックしたかどうか
   const [isClick, setIsClick] = useState(false);
   const [inputCardTitle, setInputCardTitle] =
-    useState("カードのタイトルを記入");
+    useState("リストのタイトルを入力");
   const onClickHandle = () => {
     setIsClick(true);
   };

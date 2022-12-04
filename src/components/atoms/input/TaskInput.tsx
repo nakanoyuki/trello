@@ -1,5 +1,6 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
+import styled from "styled-components";
 import { TaskType } from "../../../type/task";
 
 type Props = {
@@ -28,9 +29,10 @@ const TaskInput: FC<Props> = ({
   return (
     <div>
       <form onSubmit={onHandleSubmit}>
-        <input
+        <SInput
+          autoFocus={false}
           type="text"
-          placeholder="タスク追加"
+          placeholder="このカードにタイトルを入力..."
           onChange={onHandleInputText}
           value={inputText}
         />
@@ -38,5 +40,15 @@ const TaskInput: FC<Props> = ({
     </div>
   );
 };
+
+const SInput = styled.input`
+  width: 100%;
+  padding: 16px 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  line-height: 16px;
+  box-shadow: 2px 6px 8px 0px rgb(0 0 0 / 10%);
+`;
 
 export default TaskInput;
