@@ -23,7 +23,6 @@ const TaskInput: FC<Props> = ({
     // カードを追加
     setTaskList([...taskList, { id: uuid(), text: inputText }]);
     setInputText("");
-    console.log(id);
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputText(e.target.value);

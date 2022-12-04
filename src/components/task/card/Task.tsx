@@ -1,11 +1,21 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { TaskType } from "../../../type/task";
+import { TasksProps } from "./Tasks";
 
-// const Task: FC<TaskType> = (props) => {
-const Task: FC<{ task: TaskType }> = ({ task, taskList, setTaskList }) => {
-  const handleDelete = (id) => {
-    setTaskList(taskList.filter((task) => task.id === id));
+// type TaskProps = {
+//   task: TaskType;
+//   taskList: TasksProps["taskList"];
+//   setTaskList: TasksProps["setTaskList"];
+// };
+
+type TaskProps = {
+  task: TaskType;
+} & TasksProps;
+
+const Task: FC<TaskProps> = ({ task, taskList, setTaskList }) => {
+  const handleDelete = (id: string) => {
+    setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (
     <>
