@@ -3,19 +3,23 @@ import styled from "styled-components";
 import { TaskType } from "../../../type/task";
 import Task from "../card/Task";
 
-type TasksProps = {
+export type TasksProps = {
   taskList: TaskType[];
+  setTaskList: React.Dispatch<React.SetStateAction<TaskType[]>>;
 };
-
 
 // function Tasks(props: TasksProps) {
 // const Tasks = ( props:TasksProps ) => {
-const Tasks: FC<TasksProps> = ({ taskList }) => {
-
+const Tasks: FC<TasksProps> = ({ taskList, setTaskList }) => {
   return (
     <STaskCards>
-      {taskList.map((task) => (
-        <Task task={task} />
+      {taskList.map((task, i) => (
+        <Task
+          key={`${task.text + i}`}
+          task={task}
+          taskList={taskList}
+          setTaskList={setTaskList}
+        />
       ))}
     </STaskCards>
   );

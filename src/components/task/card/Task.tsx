@@ -1,10 +1,37 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
 import { TaskType } from "../../../type/task";
+import { TasksProps } from "./Tasks";
 
-// const Task: FC<TaskType> = (props) => {
-const Task: FC<{ task: TaskType }> = ({ task }) => {
-  return <STaskCard>{task.text}</STaskCard>;
+// type TaskProps = {
+//   task: TaskType;
+//   taskList: TasksProps["taskList"];
+//   setTaskList: TasksProps["setTaskList"];
+// };
+
+type TaskProps = {
+  task: TaskType;
+} & TasksProps;
+
+const Task: FC<TaskProps> = ({ task, taskList, setTaskList }) => {
+  const handleDelete = (id: string) => {
+    setTaskList(taskList.filter((task) => task.id !== id));
+  };
+  return (
+    <>
+      <STaskCard>
+        <p>{task.text}</p>
+
+        <button
+          onClick={() => {
+            handleDelete(task.id);
+          }}
+        >
+          削除
+        </button>
+      </STaskCard>
+    </>
+  );
 };
 
 const STaskCard = styled.li`
@@ -14,6 +41,14 @@ const STaskCard = styled.li`
   list-style-type: none;
   margin: 0 auto 20px;
   box-shadow: 2px 6px 8px 0px rgb(0 0 0 / 10%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 export default Task;
