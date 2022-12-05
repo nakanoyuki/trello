@@ -1,5 +1,8 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
+
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+
 import { TaskType } from "../../../type/task";
 import { TasksProps } from "./Tasks";
 
@@ -14,23 +17,32 @@ type TaskProps = {
 } & TasksProps;
 
 const Task: FC<TaskProps> = ({ task, taskList, setTaskList }) => {
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (
-    <>
-      <STaskCard>
-        <p>{task.text}</p>
-
-        <button
-          onClick={() => {
-            handleDelete(task.id);
-          }}
+    <Draggable index={task.id} draggableId={task.draggableId}>
+      {(provided) => (
+        <div
+          key={task.id}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
         >
-          削除
-        </button>
-      </STaskCard>
-    </>
+          <STaskCard>
+            <p>{task.text}</p>
+
+            <button
+              onClick={() => {
+                handleDelete(task.id);
+              }}
+            >
+              削除
+            </button>
+          </STaskCard>
+        </div>
+      )}
+    </Draggable>
   );
 };
 

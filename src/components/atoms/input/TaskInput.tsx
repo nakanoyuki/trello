@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-import uuid from "react-uuid";
+// import uuid from "react-uuid";
 
 import { TaskType } from "../../../type/task";
 
@@ -24,7 +24,14 @@ const TaskInput: FC<Props> = ({
       return;
     }
     // カードを追加
-    setTaskList([...taskList, { id: uuid(), text: inputText }]);
+    setTaskList([
+      ...taskList,
+      {
+        id: taskList.length,
+        text: inputText,
+        draggableId: `task-${taskList.length}`,
+      },
+    ]);
     setInputText("");
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {
