@@ -20,6 +20,9 @@ const TaskInput: FC<Props> = ({
 }: Props) => {
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (inputText === "") {
+      return;
+    }
     // カードを追加
     setTaskList([...taskList, { id: uuid(), text: inputText }]);
     setInputText("");

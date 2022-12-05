@@ -27,7 +27,7 @@ const Task: FC<TaskProps> = ({ task, taskList, setTaskList }) => {
             handleDelete(task.id);
           }}
         >
-          ✖️
+          削除
         </button>
       </STaskCard>
     </>
@@ -41,6 +41,14 @@ const STaskCard = styled.li`
   list-style-type: none;
   margin: 0 auto 20px;
   box-shadow: 2px 6px 8px 0px rgb(0 0 0 / 10%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  button {
+    background: #fff;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 export default Task;
