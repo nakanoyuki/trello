@@ -8,6 +8,7 @@ import Task from "../card/Task";
 export type TasksProps = {
   taskList: TaskType[];
   setTaskList: React.Dispatch<React.SetStateAction<TaskType[]>>;
+  index: number;
 };
 
 // function Tasks(props: TasksProps) {
@@ -34,7 +35,8 @@ const Tasks: FC<TasksProps> = ({ taskList, setTaskList }) => {
               {taskList.map((task, index) => (
                 <div key={task.id}>
                   <Task
-                    key={`${task.text + index}`}
+                    // key={`${task.text + index}`}
+                    index={index}
                     task={task}
                     taskList={taskList}
                     setTaskList={setTaskList}

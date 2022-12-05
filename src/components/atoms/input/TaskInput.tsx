@@ -1,7 +1,7 @@
 import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
 import styled from "styled-components";
-// import uuid from "react-uuid";
+import uuid from "react-uuid";
 
 import { TaskType } from "../../../type/task";
 
@@ -19,6 +19,7 @@ const TaskInput: FC<Props> = ({
   setTaskList,
 }: Props) => {
   const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const taskId = uuid();
     e.preventDefault();
     if (inputText === "") {
       return;
@@ -27,9 +28,9 @@ const TaskInput: FC<Props> = ({
     setTaskList([
       ...taskList,
       {
-        id: taskList.length,
+        id: taskId,
         text: inputText,
-        draggableId: `task-${taskList.length}`,
+        draggableId: `task-${taskId}`,
       },
     ]);
     setInputText("");
