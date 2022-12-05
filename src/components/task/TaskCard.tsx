@@ -13,7 +13,7 @@ const TaskCard = () => {
     <STaskCard>
       <TaskCardTitle />
       <TaskDeleteButton />
-      <Tasks taskList={taskList} setTaskList={setTaskList} />
+      <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
       <TaskInput
         inputText={inputText}
         setInputText={setInputText}
