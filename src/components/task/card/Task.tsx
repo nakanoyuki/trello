@@ -16,12 +16,12 @@ type TaskProps = {
   task: TaskType;
 } & TasksProps;
 
-const Task: FC<TaskProps> = ({ task, taskList, setTaskList }) => {
-  const handleDelete = (id: number) => {
+const Task: FC<TaskProps> = ({ task, taskList, setTaskList, index }) => {
+  const handleDelete = (id: string) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
   return (
-    <Draggable index={task.id} draggableId={task.draggableId}>
+    <Draggable index={index} draggableId={task.draggableId}>
       {(provided) => (
         <div
           key={task.id}
