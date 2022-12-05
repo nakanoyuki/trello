@@ -1,4 +1,5 @@
 export type TaskType = {
-  id: string;
+  id: number;
   text: string;
+  draggableId: string;
 };
