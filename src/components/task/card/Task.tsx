@@ -6,12 +6,6 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import { TaskType } from "../../../type/task";
 import { TasksProps } from "./Tasks";
 
-// type TaskProps = {
-//   task: TaskType;
-//   taskList: TasksProps["taskList"];
-//   setTaskList: TasksProps["setTaskList"];
-// };
-
 type TaskProps = {
   task: TaskType;
 } & TasksProps;
