@@ -18,6 +18,7 @@ const SHeader = styled.header`
   background: #fff;
   display: flex;
   align-items: center;
+  position: fixed;
   h1 {
     color: #f9a65a;
     font-size: 24px;

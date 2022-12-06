@@ -44,6 +44,7 @@ const STaskCardFlex = styled.div`
 `;
 const STaskCard = styled.div`
   width: 400px;
+  height: fit-content;
   background: #f7f7f7;
   border-radius: 10px;
   padding: 20px 20px 26px;
@@ -51,6 +52,7 @@ const STaskCard = styled.div`
   margin: 0 20px 0 0;
   position: relative;
   top: 0;
+  flex-shrink: 0;
 `;
 
 export default TaskCard;

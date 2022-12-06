@@ -28,8 +28,10 @@ const TaskCards = () => {
 };
 
 const STaskCardArea = styled.div`
-  padding: 40px;
+  padding: 100px 40px;
   display: flex;
+  height: 100vh;
+  overflow-x: scroll;
 `;
 
 export default TaskCards;
