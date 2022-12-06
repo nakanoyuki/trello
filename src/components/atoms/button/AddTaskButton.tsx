@@ -23,5 +23,14 @@ const AddTaskButton: FC<Props> = ({ taskCardList, setTaskCardList }: Props) => {
   );
 };
 
-const SButton = styled.button``;
+const SButton = styled.button`
+  padding: 0 20px;
+  height: 50px;
+  background: #f7f7f7;
+  border-radius: 10px;
+  border: none;
+  width: 400px;
+  text-align: left;
+  cursor: pointer;
+`;
 export default AddTaskButton;

@@ -18,13 +18,15 @@ const TaskCard: FC<CardProps> = ({ card, taskCardList, setTaskCardList }) => {
   const [taskList, setTaskList] = useState<TaskType[]>([]);
   return (
     <STaskCard>
-      <TaskCardTitle />
-      <TaskDeleteButton
-        key={card.id}
-        card={card}
-        taskCardList={taskCardList}
-        setTaskCardList={setTaskCardList}
-      />
+      <STaskCardFlex>
+        <TaskCardTitle />
+        <TaskDeleteButton
+          key={card.id}
+          card={card}
+          taskCardList={taskCardList}
+          setTaskCardList={setTaskCardList}
+        />
+      </STaskCardFlex>
       <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
       <TaskInput
         inputText={inputText}
@@ -35,11 +37,20 @@ const TaskCard: FC<CardProps> = ({ card, taskCardList, setTaskCardList }) => {
     </STaskCard>
   );
 };
+const STaskCardFlex = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
 const STaskCard = styled.div`
   width: 400px;
   background: #f7f7f7;
   border-radius: 10px;
   padding: 20px 20px 26px;
   box-shadow: 2px 6px 8px 0px rgb(0 0 0 / 10%);
+  margin: 0 20px 0 0;
+  position: relative;
+  top: 0;
 `;
+
 export default TaskCard;
