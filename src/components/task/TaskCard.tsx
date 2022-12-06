@@ -6,35 +6,51 @@ import TaskCardTitle from "./card/TaskCardTitle";
 import Tasks from "./card/Tasks";
 import { TaskType } from "../../type/task";
 import { CardType } from "../../type/card";
+import { Draggable } from "react-beautiful-dnd";
 
 export type CardProps = {
   card: CardType;
   taskCardList: CardType[];
   setTaskCardList: React.Dispatch<React.SetStateAction<CardType[]>>;
+  index: number;
 };
 
-const TaskCard: FC<CardProps> = ({ card, taskCardList, setTaskCardList }) => {
+const TaskCard: FC<CardProps> = ({
+  card,
+  taskCardList,
+  setTaskCardList,
+  index,
+}) => {
   const [inputText, setInputText] = useState("");
   const [taskList, setTaskList] = useState<TaskType[]>([]);
   return (
-    <STaskCard>
-      <STaskCardFlex>
-        <TaskCardTitle />
-        <TaskDeleteButton
-          key={card.id}
-          card={card}
-          taskCardList={taskCardList}
-          setTaskCardList={setTaskCardList}
-        />
-      </STaskCardFlex>
-      <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
-      <TaskInput
-        inputText={inputText}
-        setInputText={setInputText}
-        taskList={taskList}
-        setTaskList={setTaskList}
-      />
-    </STaskCard>
+    <Draggable index={index} draggableId={card.draggableId}>
+      {(provided) => (
+        <div key={card.id} ref={provided.innerRef} {...provided.draggableProps}>
+          <div {...provided.dragHandleProps}>
+            <STaskCard>
+              <STaskCardFlex>
+                <TaskCardTitle />
+                <TaskDeleteButton
+                  index={index}
+                  key={card.id}
+                  card={card}
+                  taskCardList={taskCardList}
+                  setTaskCardList={setTaskCardList}
+                />
+              </STaskCardFlex>
+              <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
+              <TaskInput
+                inputText={inputText}
+                setInputText={setInputText}
+                taskList={taskList}
+                setTaskList={setTaskList}
+              />
+            </STaskCard>
+          </div>
+        </div>
+      )}
+    </Draggable>
   );
 };
 const STaskCardFlex = styled.div`
