@@ -1,7 +1,7 @@
 import { FC, ReactNode } from "react";
 import styled from "styled-components";
 
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { Draggable } from "react-beautiful-dnd";
 
 import { TaskType } from "../../../type/task";
 import { TasksProps } from "./Tasks";
@@ -16,12 +16,16 @@ const Task: FC<TaskProps> = ({ task, taskList, setTaskList, index }) => {
   };
   return (
     <Draggable index={index} draggableId={task.draggableId}>
-      {(provided) => (
+      {(provided, snapshot) => (
         <div
           key={task.id}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
+          style={{
+            ...provided.draggableProps.style,
+            opacity: snapshot.isDragging ? "0.5" : "1",
+          }}
         >
           <STaskCard>
             <p>{task.text}</p>
