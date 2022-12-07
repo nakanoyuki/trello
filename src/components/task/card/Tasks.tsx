@@ -26,22 +26,16 @@ const Tasks: FC<TasksProps> = ({ taskList, setTaskList }) => {
     <DragDropContext onDragEnd={onDragEndTest}>
       <Droppable droppableId="droppableId">
         {(provided) => (
-          <div
-            className="testListArea"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <div {...provided.droppableProps} ref={provided.innerRef}>
             <STaskCards>
               {taskList.map((task, index) => (
-                <div key={task.id}>
-                  <Task
-                    // key={`${task.text + index}`}
-                    index={index}
-                    task={task}
-                    taskList={taskList}
-                    setTaskList={setTaskList}
-                  />
-                </div>
+                <Task
+                  index={index}
+                  key={task.id}
+                  task={task}
+                  taskList={taskList}
+                  setTaskList={setTaskList}
+                />
               ))}
             </STaskCards>
             {provided.placeholder}

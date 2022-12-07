@@ -26,29 +26,29 @@ const TaskCard: FC<CardProps> = ({
   return (
     <Draggable index={index} draggableId={card.draggableId}>
       {(provided) => (
-        <div key={card.id} ref={provided.innerRef} {...provided.draggableProps}>
-          <div {...provided.dragHandleProps}>
-            <STaskCard>
-              <STaskCardFlex>
-                <TaskCardTitle />
-                <TaskDeleteButton
-                  index={index}
-                  key={card.id}
-                  card={card}
-                  taskCardList={taskCardList}
-                  setTaskCardList={setTaskCardList}
-                />
-              </STaskCardFlex>
-              <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
-              <TaskInput
-                inputText={inputText}
-                setInputText={setInputText}
-                taskList={taskList}
-                setTaskList={setTaskList}
-              />
-            </STaskCard>
-          </div>
-        </div>
+        <STaskCard
+          key={card.id}
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+        >
+          <STaskCardFlex {...provided.dragHandleProps}>
+            <TaskCardTitle />
+            <TaskDeleteButton
+              index={index}
+              key={card.id}
+              card={card}
+              taskCardList={taskCardList}
+              setTaskCardList={setTaskCardList}
+            />
+          </STaskCardFlex>
+          <Tasks taskList={taskList} setTaskList={setTaskList} index={1} />
+          <TaskInput
+            inputText={inputText}
+            setInputText={setInputText}
+            taskList={taskList}
+            setTaskList={setTaskList}
+          />
+        </STaskCard>
       )}
     </Draggable>
   );

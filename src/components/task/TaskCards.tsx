@@ -22,11 +22,7 @@ const TaskCards = () => {
     <DragDropContext onDragEnd={onDragEndTest}>
       <Droppable droppableId="droppableId" direction="horizontal">
         {(provided) => (
-          <div
-            className="testListArea"
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-          >
+          <div {...provided.droppableProps} ref={provided.innerRef}>
             <STaskCardArea>
               {taskCardList.map((card, index) => (
                 <TaskCard
