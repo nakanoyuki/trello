@@ -1,16 +1,19 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+
 import Header from "./components/atoms/layout/Header";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import Logout from "./components/pages/Logout";
 import TaskCards from "./components/task/TaskCards";
+import Router from "./router/Router";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
-      <Header />
-      <TaskCards />
+      <BrowserRouter>
+        <Router />
+      </BrowserRouter>
     </div>
   );
 }
