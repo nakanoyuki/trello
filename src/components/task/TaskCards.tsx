@@ -52,6 +52,7 @@ const STaskCardArea = styled.div`
   display: flex;
   height: 100vh;
   overflow-x: scroll;
+  background-color: pink;
 `;
 
 export default TaskCards;
