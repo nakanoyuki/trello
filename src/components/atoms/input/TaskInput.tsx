@@ -2,6 +2,8 @@ import { Dispatch, FC, SetStateAction } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 import uuid from "react-uuid";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../../../firebase";
 
 import { TaskType } from "../../../type/task";
 
@@ -18,7 +20,7 @@ const TaskInput: FC<Props> = ({
   taskList,
   setTaskList,
 }: Props) => {
-  const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     const taskId = uuid();
     e.preventDefault();
     if (inputText === "") {
@@ -34,6 +36,10 @@ const TaskInput: FC<Props> = ({
       },
     ]);
     setInputText("");
+
+    await addDoc(collection(db, "posts"), {
+      text: inputText,
+    });
   };
   const onHandleInputText = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setInputText(e.target.value);
