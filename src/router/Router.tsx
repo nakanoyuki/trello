@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 
 import Login from "../components/pages/Login";
 import Page404 from "../components/pages/Page404";
+import HeaderLayout from "../components/templetes/HeaderLayout";
 import homeRoutes from "./HomeRoutes";
 
 const Router: FC = memo(() => {
@@ -21,14 +22,16 @@ const Router: FC = memo(() => {
                 exact={route.exact}
                 path={`${url}${route.path}`}
               >
-                {route.children}
+                <HeaderLayout>{route.children}</HeaderLayout>
               </Route>
             ))}
           </Switch>
         )}
       ></Route>
       <Route path="*" exact>
-        <Page404 />
+        <HeaderLayout>
+          <Page404 />
+        </HeaderLayout>
       </Route>
     </Switch>
   );
