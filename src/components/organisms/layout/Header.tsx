@@ -5,9 +5,7 @@ import styled from "styled-components";
 const Header = () => {
   return (
     <SHeader>
-      {/* <SLink> */}
       <h1>MY TRELLO</h1>
-      {/* </SLink> */}
     </SHeader>
   );
 };
